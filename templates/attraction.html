@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block styleCSS %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/attraction.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <div id="mainContent" class="mainContent">
+        <div id="imageAndBookingArea" class="imageAndBookingArea">
+            <div id="slideShowContainer" class="slideShowContainer">
+                <!-- <div class="slide fade"> 
+                </div>
+                <div class="slide fade">
+                </div> -->
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)"></a>
+                <a class="next" onclick="plusSlides(1)"></a>
+                <div id="dots" class="dots" >
+                    <!-- <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span> -->
+                </div>     
+            </div>
+            
+            <div id="profileArea" class="profileArea">
+                <div id="attractionNameInAttracionPage" class="attractionNameInAttracionPage"></div>
+                <div id="categoryAndMrt" class="categoryAndMrt"></div>
+                <div id="booking" class="booking">
+                    <div id="bookingDetail" class="bookingDetail">訂購導覽行程</div>
+                    <div id="bookingDescription" class="bookingDescription">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+                    <div class="bookingDetail">選擇日期:
+                        <input type="date" id="tripDate" name="tripDate"
+                        value="2022-12-22"
+                        min="2022-12-01" max="2030-12-31" class="tripDate">
+                    </div>
+                    <div class="bookingDetail">選擇時間:
+                        <input type="radio" class="button_radio" id="radioIdMorning" name="tripTime" value="morning" onclick="checkRadio(value)" checked>上半天
+                        <input type="radio" class="button_radio" id="radioIdAfternoon" name="tripTime" value="afternoon" onclick="checkRadio(value)">下半天
+                    </div>
+                    <div class="bookingCostTitle">導覽費用: <span class="bookingCost" id="bookingCost">新台幣2000元</span></div>
+                    <input type="button" class="bookingSubmit" id="bookingSubmit" value="開始預約行程">
+                </div>
+            </div>
+        </div>
+
+        <hr class="hr-solid"/>
+        <div id="detailArea" class="detailArea">
+            <div id="description" class="description">     
+            </div>
+            <div id="address" class="address">
+                <div class="addressTitle">景點地址:</div>
+                <div id="addressContent" class="addressContent"></div>
+            </div>
+            <div id="transportation" class="transportation">
+                <div class="transportationTitle">交通方式:</div>
+                <div id="transportationContent" class="transportationContent"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/JS/attraction.js"></script>
+{% endblock %}
+

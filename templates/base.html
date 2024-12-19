@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <title>Taipei day trip</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/common.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/index.css')}}" />   
+    
+        {% block styleCSS %}
+        {% endblock %}
+    </head>
+    <body class="baseSettings">
+        <div class="navbarcontainer">
+            <div class="nav">
+                <div class="title" id="titleOfWeb">台北一日遊</div>
+                <div class="menu">
+                    <div class="item" id="bookingRecording">預定行程</div>
+                    <div class="item" id="signInSignUp">登入/註冊</div>
+                </div>
+            </div>
+        </div>
+        {% block body %}
+        {% endblock %}
+        <div class="footer">COPYRIGHT © 2022 台北一日遊
+        </div>
+    
+        <div class="mask" id="mask"></div>
+        <dialog id="signInDialog" class="signInDialog">
+            <div class="logInUp"><div class="logInUpTitle">登入會員帳號</div><div id="closeSignInDialog" class="closeButton"></div></div>
+            <form id="loginForm" method="dialog">
+                <input id="userEmailForSignIn"  class="inputItem"  type="text" placeholder="輸入電子信箱" required>
+                <input id="userPasswordForSignIn" class="inputItem" type="password" placeholder="輸入密碼" required>
+                <input type="button" class="logInUpSubmit" id="logInSubmit"  value="登入帳戶">
+            </form>
+            <div id="signUpMessage" class="signInUpMessage">還沒有帳戶?點此註冊</div>
+        </dialog>
+
+        <dialog id="signUpDialog" class="signUpDialog">
+            <div class="logInUp"><div class="logInUpTitle">註冊會員帳號</div><div id="closeSignUpDialog" class="closeButton"></div></div>
+            <form id="signUpForm" method="dialog">
+                <input id="username" class="inputItem" type="text" placeholder="輸入姓名" required>
+                <input id="userEmailForSignUp" class="inputItem" type="text" placeholder="輸入電子郵件" required>
+                <input id="userPasswordForSignUp" class="inputItem" type="password" placeholder="輸入密碼" required>
+                <input type="button" class="logInUpSubmit" id="logUpSubmit" value="註冊新帳戶">
+            </form>
+            <div id="signInMessage" class="signInUpMessage">已經有帳戶了?點此登入</div>
+        </dialog>
+
+        <script>
+            const titleBlock=document.getElementById("titleOfWeb");
+            titleBlock.addEventListener("click", function(){
+                location.href="/";
+            });
+            
+            const bookingRecording=document.getElementById("bookingRecording");
+            bookingRecording.addEventListener("click", checkbForBookingRecording);
+            //check login for booking recording
+            function checkbForBookingRecording(){
+                let src="/api/user/auth";           
+                fetch(src,
+                        {
+                            method:"GET",
+                            headers:{"Content-Type": "application/json"},
+                        }
+                ).then(response => response.json())
+                .then(function(data){
+                        if(data.data){
+                            //User already login
+                            location.href="/booking";
+                            
+                        }
+                        else{
+                            showSignInUpDialog();
+                        }
+                    }
+                );
+                
+            }
+            const signInSignUp=document.getElementById("signInSignUp");
+            const signInDialog=document.getElementById("signInDialog");
+            const mask=document.getElementById("mask");
+            signInSignUp.addEventListener("click", showSignInUpDialog);
+            function showSignInUpDialog(){
+                signInDialog.showModal();
+                mask.style.display="block";
+                let showMessageForSignIn=document.getElementById("showMessageForSignIn");
+                if(showMessageForSignIn){
+                    signInDialog.style.height="265px";
+                    signInDialog.removeChild(showMessageForSignIn);
+                }
+            }
+            const closeSignInDialog=document.getElementById("closeSignInDialog");
+            closeSignInDialog.addEventListener("click", 
+                                    function(){
+                                        signInDialog.close();
+                                        mask.style.display="none";
+                                    }
+            );
+            const closeSignUpDialog=document.getElementById("closeSignUpDialog");
+            closeSignUpDialog.addEventListener("click", 
+                                    function(){
+                                        signUpDialog.close();
+                                        mask.style.display="none";
+                                    }
+            );
+            const signUpMessage=document.getElementById("signUpMessage");
+            signUpMessage.addEventListener("click", 
+                                    function(){
+                                        signInDialog.close();
+                                        signUpDialog.showModal();
+                                        let showMessage=document.getElementById("showMessageForSignUp");
+                                        if(showMessage){
+                                            signUpDialog.style.height="345px";
+                                            signUpDialog.removeChild(showMessage);
+                                            var message=showMessage;
+                                        }                   
+                                    }
+            );
+            const signInMessage=document.getElementById("signInMessage");
+            signInMessage.addEventListener("click", 
+                                    function(){
+                                        signUpDialog.close();
+                                        signInDialog.showModal();
+                                        let showMessage=document.getElementById("showMessageForSignIn");
+                                        if(showMessage){
+                                            signInDialog.style.height="265px";
+                                            signInDialog.removeChild(showMessage);
+                                            var message=showMessage;
+                                        }      
+                                    }
+            );
+            const logInSubmit = document.getElementById('logInSubmit');
+            logInSubmit.addEventListener("click",
+                                    function(){
+                                        signIn();                      
+                                    }
+            );
+            function logout(){
+                let src="/api/user/auth";
+                fetch(src,
+                        {
+                            method:"DELETE",
+                            headers:{"Content-Type": "application/json"},
+                        }
+                ).then(response => response.json())
+                .then(function(data){
+                    console.log(data);
+                        console.log(data.ok);
+                        console.log(data["ok"]);
+                        if(data.ok==true){
+                            //User already login
+                            let signInSignUp=document.getElementById("signInSignUp");
+                            // signInSignUp.textContent="";
+                            signInSignUp.textContent="登入/註冊";
+                            signInSignUp.removeEventListener('click', logout);
+                            signInSignUp.addEventListener('click',showSignInUpDialog);
+                            window.location.reload();
+                        }
+                    }
+                );
+            }
+            function signIn(){
+                //Get data from user
+                let userEmailForSignIn=loginForm["userEmailForSignIn"].value;
+                let userPasswordForSignIn=loginForm["userPasswordForSignIn"].value;
+                let src="/api/user/auth";
+                let body={
+                            "email": userEmailForSignIn,
+                            "password": userPasswordForSignIn
+                        };
+                let showMessageForSignIn=document.getElementById("showMessageForSignIn");
+                let newHeight="300px";
+                let originHeight="265px";
+                if(showMessageForSignIn){
+                    signInDialog.style.height=originHeight;
+                    signInDialog.removeChild(showMessageForSignIn);
+                    var messageForSignIn=showMessageForSignIn;
+                }else{
+                    var messageForSignIn=document.createElement('div');
+                    messageForSignIn.id="showMessageForSignIn";
+                }
+                if(userEmailForSignIn && userPasswordForSignIn){
+                    fetch(src,
+                            {
+                                method:"PUT",
+                                headers:{"Content-Type": "application/json","Accept": "application/json"},
+                                body:JSON.stringify(body)
+                        }
+                    ).then(response => response.json())
+                    .then(function(data){
+                            if(data["ok"]==true){
+                                //register successfully
+                                //reload
+                                window.location.reload();
+                                
+                            }else if(data["error"]==true) {
+                                //Show error message in sign up dialog
+                                messageForSignIn.style.color="red";
+                                messageForSignIn.style.fontWeight="bold";
+                                // messageForSignIn.textContent="";
+                                messageForSignIn.textContent=data["message"];
+                                signInDialog.style.height=newHeight;
+                                signInDialog.insertBefore(messageForSignIn,signUpMessage);
+                            }
+                        }
+                    );
+                }else{
+                    messageForSignIn.style.color="red";
+                    messageForSignIn.style.fontWeight="bold";
+                    // messageForSignIn.textContent="";
+                    messageForSignIn.textContent="電子信箱與密碼欄都需要輸入唷!";
+                    signInDialog.style.height=newHeight;
+                    signInDialog.insertBefore(messageForSignIn,signUpMessage);
+                }
+            }
+            //==============For sign up=======================
+            const logUpSubmit = document.getElementById('logUpSubmit');
+            logUpSubmit.addEventListener("click",
+                                    function(){
+                                        signUp();                      
+                                    }
+            );
+            const signUpDialog=document.getElementById("signUpDialog");
+
+            function signUp(){
+                //Get data from user
+                let username=signUpForm["username"].value;
+                let userEmailForSignUp=signUpForm["userEmailForSignUp"].value;
+                let userPasswordForSignUp=signUpForm["userPasswordForSignUp"].value;
+                let newHeight="355px";
+                let originHeight="340px";
+                
+                let src="/api/user";
+                let body={
+                            "name": username,
+                            "email": userEmailForSignUp,
+                            "password": userPasswordForSignUp
+                        };
+                let showMessage=document.getElementById("showMessageForSignUp");
+                if(showMessage){
+                    signUpDialog.style.height=originHeight;
+                    signUpDialog.removeChild(showMessage);
+                    var messageForSignUp=showMessage;
+                }else{
+                    var messageForSignUp=document.createElement('div');
+                    messageForSignUp.id="showMessageForSignUp";
+                }
+                if(username && userEmailForSignUp && userPasswordForSignUp){
+                    fetch(src,
+                            {
+                                method:"POST",
+                                headers:{"Content-Type": "application/json","Accept": "application/json"},
+                                body:JSON.stringify(body)
+                        }
+                    ).then(response => response.json())
+                    .then(function(data){
+                            if(data["ok"]==true){
+                                //register successfully
+                                messageForSignUp.style.color="#448899";
+                                messageForSignUp.style.fontWeight="bold";
+                                messageForSignUp.textContent="註冊成功";
+                                signUpDialog.style.height=newHeight;
+                                signUpDialog.insertBefore(messageForSignUp,signInMessage);
+                                
+                            }else if(data["error"]==true) {
+                                //Show error message in sign up dialog
+                                messageForSignUp.style.color="red";
+                                messageForSignUp.style.fontWeight="bold";
+                                messageForSignUp.textContent=data["message"];
+                                signUpDialog.style.height=newHeight;
+                                signUpDialog.insertBefore(messageForSignUp,signInMessage);
+                            }
+                        }
+                    );
+                }else{
+                    messageForSignUp.style.color="red";
+                    messageForSignUp.style.fontWeight="bold";
+                    messageForSignUp.textContent="姓名、電子郵件與密碼欄都需要輸入唷!";
+                    signUpDialog.style.height=newHeight;
+                    signUpDialog.insertBefore(messageForSignUp,signInMessage);
+                }
+            }
+
+            function checkToken(){
+                let src="/api/user/auth";
+                fetch(src,
+                        {
+                            method:"GET",
+                            headers:{"Content-Type": "application/json"},
+                        }
+                ).then(response => response.json())
+                .then(function(data){
+                        if(data.data){
+                            //User already login
+                            let signInSignUp=document.getElementById("signInSignUp");
+                            // signInSignUp.textContent="";
+                            signInSignUp.textContent="登出系統";
+                            signInSignUp.removeEventListener('click', showSignInUpDialog);
+                            signInSignUp.addEventListener('click',logout);
+                        }
+                    }
+                );
+                
+            }
+        
+            setTimeout("checkToken()", 2);
+            
+        </script>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

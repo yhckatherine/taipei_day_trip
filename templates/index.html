@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styleCSS %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/index.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <div class="welcome">
+        <div class="slogan">
+            <div class="sloganTitle">輕鬆享受台北一日悠閒</div>
+            <div class="sloganSubtitle">探索每個角落，體驗城市的深度旅遊行程</div>
+            <div class="search">
+                <input class="searchBar" type="text" name="searchAttraction" required="required" placeholder="輸入景點名稱查詢"/><input type="button" class="buttonForsearch" onclick='searchAttraction();'>
+                <div class="categoryContainer" id="categoryContainer">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="attractionsArea">
+        <div class="attractionsGroup">
+            
+        </div>
+        <div id="bottomOfContent"></div>
+        
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/JS/index.js"></script>
+{% endblock %}

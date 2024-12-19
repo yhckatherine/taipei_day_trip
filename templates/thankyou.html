@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block styleCSS %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/thankyou.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <div id="mainAreaInThankyouPage" class="mainAreaInThankyouPage">
+        <div class="detailInThankyouPage">
+            <div class="titleInThankyouPage">感謝您訂購此旅遊行程!</div>
+            <div class="itemInThankyouPage">您的訂單編號: <span id="orderIdInThankyouPage" class="itemValueInThankyouPage">123</span></div>
+            <div class="itemInThankyouPage">訂單預定狀態: <span id="orderStatusInThankyouPage" class="itemValueInThankyouPage">123</span></div>
+
+        </div>
+        <div id="clouds">
+            <div class="cloud x1"></div>
+            <div class="cloud x1_5"></div>
+            <div class="cloud x2"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/JS/thankyou.js"></script>
+{% endblock %}
+

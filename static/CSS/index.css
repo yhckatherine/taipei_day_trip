@@ -1,0 +1,422 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+a {
+    text-decoration: none;
+}
+.baseSettings 
+{
+    justify-content: start;
+    align-items: start;
+    margin: 0px;
+}
+.attractionsArea{
+    width: 1200px;
+    padding: 15px; 
+    margin-top: 40px;
+    margin-left: auto; /*為置中效果*/
+    margin-right: auto; /*為置中效果*/
+    margin-bottom: 55px; 
+}
+.attractionsGroup{
+    display: grid;
+    justify-content: space-between; 
+    grid-template-columns: repeat(4,  minmax(270px, auto));
+    grid-gap: 30px; 
+    grid-auto-flow: row;
+}
+.attractionsItem{
+    width: 270px;
+    height: 242px;
+    border-color: rgb(232, 229, 229);
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+.attractionTopArea{
+    width: 270px;
+    height: 197px;
+    background-size: 270px 197px;
+    align-items: center;
+    border-radius: 5px 5px 0px 0px;
+}
+.attractionImage{
+    width: 270px;
+    height: 157px;
+}
+.attractionName{
+    height: 40px;
+    background:rgba(0, 0, 0, 0.6);
+    position:relative;
+    z-index:1;
+    text-align:left;
+    padding: 10px;
+    color:white;
+    box-sizing: border-box;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+}
+.attractionBottomArea{
+    width: 270px;
+    height: 45px;
+    display: grid;
+    justify-content: space-between; 
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;  
+}
+.MRT{
+    color:#757575;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align:left;
+}
+.category{
+    color:#757575;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.navbarcontainer{
+    position: sticky;
+    z-index: 5;
+    top:0;
+    left: 0;
+    width: 1200px;
+    margin-left: auto; 
+    margin-right: auto;
+    background: white;
+    border-bottom-style:solid;
+    border-color:hsl(30, 7%, 89%);
+    border-width:1px;
+}
+.nav{
+    width: 100%;
+    margin-left: 0px; 
+    display: grid;
+    padding: 10px 0px;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr;
+}
+.menu {
+    display: grid;
+    grid-auto-flow: column;
+    justify-self: end; 
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+}
+.item {
+    margin: 0px 10px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #666666;
+    cursor: pointer;
+}
+.title{
+    color:#448899;
+    font-weight: 700;
+    font-size: 30px;
+    cursor: pointer;
+}
+.welcome{
+    width: 100%;
+    height: 320px;
+    background-image:url(../images/welcome.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto; 
+    margin-right: auto; 
+}
+.slogan{
+    width: 1200px;
+    height: 78px;
+    padding-top: 85px;
+    margin-left: auto; 
+    margin-right: auto; 
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    color: #F8F8F8;
+}
+.sloganTitle{
+    font-weight: 700;
+    font-size: 28px;
+    text-shadow: 0px 0px 30px #AABBCC;
+   
+}
+.sloganSubtitle{
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 16px;
+}
+.search{
+    margin-top: 25px;
+}
+.searchBar{
+    width: 400px;
+    height: 46px;
+    vertical-align:middle;
+    box-sizing: border-box;
+    border:0px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px #AABBCC;
+    
+}
+/*webkit瀏覽器專用*/
+input::-webkit-input-placeholder { 
+    padding: 15px;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #757575;
+}
+/*Firefox 4-18瀏覽器專用*/
+input::-moz-placeholder { 
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #757575;
+}
+/*Firefox 19+瀏覽器專用*/
+input::-moz-placeholder { 
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #757575;
+}
+/*IE10瀏覽器專用*/
+input::-ms-input-placeholder { 
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #757575;
+}
+.buttonForsearch{
+    width: 60px;
+    height: 46px;
+    background-color: #448899;
+    vertical-align:middle;
+    margin-bottom: 0px;
+    border-radius: 0px 6px 6px 0px;
+    border:0px;
+    background-image:url(../icons/icon_search.svg);
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-size: round;
+    background-position:center;
+    cursor: pointer;
+}
+.footer{
+    width: 100%;
+    height: 104px;
+    left: 0px;
+    bottom: 0px;
+    background: #757575; 
+    text-align:center;
+    line-height:104px;
+    color: white;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+}
+.categoryContainer{
+    width: 400px;
+    height: 162px;
+    background: #FFFFFF;
+    /* Box Shadow */
+    box-shadow: 0px 0px 20px #AABBCC;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    /* grid-template-columns: repeat(3, 120px); */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-auto-flow: row;
+    grid-auto-rows: 40px;
+    display: none;
+    
+}
+.categoryInSearchBar{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;  
+    border-radius: 5px; 
+    
+}
+.categoryInSearchBar:hover {
+    background-color: rgb(232, 227, 227);
+}
+@media (max-width:1200px){
+    .attractionsArea{
+        width: 90%;
+    }
+    .attractionsGroup{
+        grid-template-columns: repeat(auto-fit,  minmax(35%, auto));
+        grid-gap: 30px; 
+        grid-auto-flow: row;
+    }
+    .navbarcontainer{
+        width: 90%;
+    }
+    .nav{
+        width: 100%;
+    }
+    .slogan{
+        width: 50%;
+    }
+    .searchBar{
+        width: 60%;
+    }
+    .welcome{
+        background-image:url(../images/welcome.jpg);
+        background-size: cover;
+        
+    }
+}
+
+@media (max-width:600px){
+    .footer{
+        width: 100%;
+    }
+    .welcome{
+        width: 100%;
+        height: 320px;
+        background-image:url(../images/welcome.jpg);
+        background-size: 1283px 320px;
+        
+    }
+    .navbarcontainer{
+        width: 100%;
+    }
+    .nav{
+        width: 100%;
+        grid-template-columns: auto auto;  
+        padding-left: 10px;
+    }
+    .slogan{
+        width: 340px;
+        height: 169px;
+        padding: 85px 5%;
+    }
+    .searchBar{
+        width: 70%;
+    }
+    .attractionsArea{
+        width: 352px;
+    }
+    .attractionsGroup{
+        grid-template-columns: repeat(1, 322px);
+        
+        align-items: center; 
+        justify-content: center;
+    }
+    .attractionTopArea{
+        width: 322px;
+        height: 235px;
+        background-size: 322px 235px;
+    }
+    .attractionImage{
+        width: 322px;
+        height: 195px;
+    }
+    .attractionBottomArea{
+        width: 322px;
+        height: 45px;
+    }
+    .attractionsItem{
+        width: 322px;
+        height: 280px;
+    }
+    .categoryContainer{
+        width: 300px;
+        height: 200px;
+        grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
+    }
+}
+@media (max-width:360px){
+    .footer{
+        width: 100%;
+    }
+    .welcome{
+        width: 100%;
+        height: 320px;
+        background-image:url(../images/welcome.jpg);
+        background-size: 1283px 320px;
+        
+    }
+    .nav{
+        margin: 0px;
+    }
+    .slogan{
+        margin: 0px;
+        width: 320px;
+        height: 169px;
+        margin-left: 0px;
+        text-align:left;
+        padding: 86px 10px;
+        box-sizing: border-box;
+    }
+    .searchBar{
+        width: 255px;
+    }
+    .attractionsArea{
+        width: 90%;
+    }
+    .attractionsGroup{
+        grid-template-columns: repeat(1, 322px);
+        align-items: center; 
+        justify-content: center;
+    }
+    .attractionTopArea{
+        width: 321px;
+        height: 235px;
+        background-size: 321px 235px;
+    }
+    .attractionImage{
+        width: 321px;
+        height: 195px;
+    }
+    .attractionBottomArea{
+        width: 321px;
+        height: 45px;
+    }
+    .attractionsItem{
+        width: 321px;
+        height: 280px;
+    }
+    .categoryContainer{
+        
+        grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
+    }
+    .title{
+        margin: 0px;
+    }
+    .menu {
+        margin: 0px;
+    }
+    .sloganTitle{
+        margin: 0px;
+        text-align:left;      
+    }
+    .welcome{
+        margin: 0px;
+        text-align:left;
+    }
+    .searchBar{
+        width: 230px;
+        height: 46px;
+    }
+}

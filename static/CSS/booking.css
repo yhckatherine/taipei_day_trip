@@ -1,0 +1,212 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+/* .creditCardItem{
+    width: 200px;
+    height: 38px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    color: #757575;
+} */
+.tpfield {
+    width: 200px;
+    height: 38px;
+    border: 1px solid gray;
+    margin: 5px 0;
+    padding: 5px;
+}
+.contactItem{
+    width: 200px;
+    height: 38px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    padding: 10px;
+}
+.noteInBookingPage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #666666;
+    margin-top: 27px;
+}
+.contactTitleInBookingPage,.creditCardTitleInBookingPage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 16px;
+    color: #666666;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.userInformation,.creditCardInformation{
+    padding: 44px 2px;
+    border: 1px solid #E8E8E8;
+    border-width:1px 0 0 0;
+    margin-bottom: 0px;
+    text-align: left;
+}
+.bookDateInBookingPage,.bookTimeInBookingPage,.bookCostInBookingPage,.bookAddressInBookingPage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+.deleteIcon{
+    height: 30px;
+    width: 30px;
+    background: url(../icons/icon_delete.svg);
+    cursor: pointer;
+}
+.getBookingInformation .topArea{
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+    justify-content:space-between;
+    align-content:start;
+    
+    margin-top: 35px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+.attractionBookingDetail .titleInBookingPage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #448899;
+    margin-bottom: 20px;
+}
+.itemInBookingPage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #666666;
+    margin-top: 10px;
+}
+.attractionImage{
+    width: 250px;
+    height: 200px;
+    
+    background-size: 250px 200px;
+    background-repeat: cover;
+}
+.getBookingInformation{
+    display: none;
+}
+.greedingMessage{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 16px;
+    color: #666666;
+    text-align: left;
+    margin-top: 40px;
+}
+.noBookingInformation{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+    margin-top: 35px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+.totalPrice{
+    height: 14px;
+    text-align: right;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+    border: 1px solid #E8E8E8;
+    border-width: 1px 0 0 0;
+    padding-top: 43px;
+}
+.mainAreaInBookingPage{
+    width: 1000px;
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align:right !important; 
+}
+.bookingSubmitInBookingPage{
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 173px;
+    height: 36px;
+    background: #448899;
+    border-radius: 5px;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 25px;
+}
+@media (max-width:1200px){
+    .mainAreaInBookingPage{
+        width:90%;
+    }
+    .getBookingInformation .topArea{        
+        grid-column-gap: 10px;
+    }
+
+}
+@media (max-width:600px){   
+
+    .getBookingInformation .topArea{  
+        width: 100%;      
+        height: 456px;
+        grid-template-columns: 100% ;
+    }
+    .attractionBookingDetail{
+        margin-top: 28px;
+    }
+    .attractionImage{
+        width: 65%;
+        background-size: 370px 280px;
+        background-repeat: cover;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+    .deleteIcon{
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: 0px;
+        position: relative;
+    }
+}
+@media (max-width:360px){
+    .attractionImage{
+        width: 100%;
+        background-size: 340px 256px;
+        background-repeat: cover;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+    .deleteIcon{
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: 0px;
+        position: relative;
+    }
+}

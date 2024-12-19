@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block styleCSS %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/booking.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <div id="mainAreaInBookingPage" class="mainAreaInBookingPage">
+        <div id="greedingMessage" class="greedingMessage">您好，待預訂的行程如下:</div>
+        <div id="getBookingInformation" class="getBookingInformation">
+            <div id="topArea" class="topArea">
+                <div id="attractionImage" class="attractionImage"></div>
+                <div id="attractionBookingDetail" class="attractionBookingDetail">
+                    <div class="titleInBookingPage">台北一日遊 ： <span id="bookAttractionInBookingPage" class="attractionNameInBookingPage"></span></div>
+                    <div class="itemInBookingPage">日期 ： <span id="bookDateInBookingPage" class="bookDateInBookingPage"></span></div>
+                    <div class="itemInBookingPage">時間 ： <span id="bookTimeInBookingPage" class="bookTimeInBookingPage"></span></div>
+                    <div class="itemInBookingPage">費用 ： <span id="bookCostInBookingPage" class="bookCostInBookingPage"></span></div>
+                    <div class="itemInBookingPage">地點 ： <span id="bookAddressInBookingPage" class="bookAddressInBookingPage"></span></div>
+                </div>
+                <div id="deleteIcon" class="deleteIcon"></div>
+            </div>
+            <div id="userInformation" class="userInformation">
+                <div class="contactTitleInBookingPage">您的聯絡資訊</div>
+                <div class="itemInBookingPage">聯絡姓名 ： <input id="contactName"  class="contactItem"  type="text"></div>
+                <div class="itemInBookingPage">聯絡信箱 ： <input id="contactMail"  class="contactItem"  type="text"></div>
+                <div class="itemInBookingPage">手機號碼 ： <input id="contactPhone"  class="contactItem"  type="text"></div>
+                <div class="noteInBookingPage">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
+            </div>
+            <div id="creditCard" class="creditCardInformation">
+                <div class="creditCardTitleInBookingPage">信用卡付款資訊</div>
+                <div class="itemInBookingPage">卡片號碼 ： <div id="card-number"  class="tpfield"  type="password" ></div></div>
+                <div class="itemInBookingPage">過期時間 ： <div id="card-expiration-date"  class="tpfield"  type="text"></div></div>
+                <div class="itemInBookingPage">驗證密碼 ： <div id="card-ccv"  class="tpfield"  type="text"></div></div>
+            </div>
+            <div id="totalPrice" class="totalPrice">總價 ： <span id="totalCostInBookingPage"></span></div>
+            <input type="button" class="bookingSubmitInBookingPage" id="bookingSubmitInBookingPage" value="確認訂購並付款">
+        </div>
+        <div id="noBookingInformation" class="noBookingInformation">
+            目前沒有任何待預定的行程
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+    <script src="/JS/booking.js"></script>
+{% endblock %}
+
